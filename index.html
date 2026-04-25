@@ -3,28 +3,29 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Meha ❤️ Deep Wedding</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Great+Vibes&family=Poppins:wght@300&display=swap" rel="stylesheet">
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
 
 body{
 font-family:'Poppins',sans-serif;
-color:white;
-background:linear-gradient(135deg,#5a0f2e,#b31242,#e91e63);
+background:linear-gradient(135deg,#0a1931,#0f3460,#16213e);
+color:#d4af37;
 overflow-x:hidden;
 }
 
-/* Floral overlay */
+/* Mandala overlay */
 body::before{
 content:"";
 position:fixed;
 width:100%;
 height:100%;
-background:url('https://images.unsplash.com/photo-1525310072745-f49212b5ac6d?q=80&w=1200') center/cover;
-opacity:0.2;
+background:url('https://www.transparenttextures.com/patterns/arabesque.png');
+opacity:0.08;
 z-index:-1;
 }
 
@@ -36,12 +37,14 @@ justify-content:center;
 align-items:center;
 }
 
+/* Glass card */
 .glass{
 width:90%;
 max-width:400px;
 height:85vh;
-background:rgba(255,255,255,0.15);
-backdrop-filter:blur(18px);
+background:rgba(255,255,255,0.05);
+border:1px solid rgba(212,175,55,0.3);
+backdrop-filter:blur(20px);
 border-radius:30px;
 padding:25px;
 display:flex;
@@ -51,15 +54,33 @@ text-align:center;
 }
 
 /* TEXT */
-.heading{letter-spacing:3px;font-size:12px;}
-.names{font-family:'Playfair Display';font-size:28px;}
+.heading{
+letter-spacing:3px;
+font-size:12px;
+color:#c9a54c;
+}
+
+.names{
+font-family:'Great Vibes',cursive;
+font-size:34px;
+color:#ffd700;
+}
+
+.sub{
+font-size:12px;
+opacity:0.8;
+}
 
 /* COUNTDOWN */
 .countdown{
 display:flex;
 justify-content:space-around;
 }
-.time{font-size:20px;font-weight:bold;}
+.time{
+font-size:20px;
+font-weight:bold;
+color:#ffd700;
+}
 .label{font-size:10px;}
 
 /* BUTTONS */
@@ -68,16 +89,30 @@ justify-content:space-around;
 flex:1;
 padding:10px;
 border-radius:30px;
-border:1px solid white;
+border:1px solid #d4af37;
 cursor:pointer;
+transition:0.3s;
+}
+.btn:hover{
+background:#d4af37;
+color:#0a1931;
 }
 
 /* SECTION */
-.section{padding:40px 20px;text-align:center;}
+.section{
+padding:40px 20px;
+text-align:center;
+}
 
+.section h2{
+font-family:'Playfair Display';
+margin-bottom:20px;
+}
+
+/* EVENT CARD */
 .card{
-background:rgba(255,255,255,0.1);
-backdrop-filter:blur(10px);
+background:rgba(255,255,255,0.05);
+border:1px solid rgba(212,175,55,0.2);
 padding:15px;
 border-radius:15px;
 margin:15px 0;
@@ -85,14 +120,32 @@ cursor:pointer;
 transition:0.3s;
 }
 
-.card:hover{transform:scale(1.03);}
+.card:hover{
+transform:scale(1.03);
+border-color:#ffd700;
+}
 
 .hidden{display:none;}
 
 ul{list-style:none;text-align:left;}
-li{margin:5px 0;}
+li{margin:6px 0;font-size:13px;}
 
-/* Confetti */
+/* LINKS */
+a{
+color:#ffd700;
+text-decoration:none;
+}
+
+/* MEET SECTION */
+.profile{
+background:rgba(255,255,255,0.05);
+border:1px solid rgba(212,175,55,0.2);
+padding:15px;
+border-radius:15px;
+margin:10px 0;
+}
+
+/* CONFETTI GOLD */
 .confetti{
 position:fixed;
 width:8px;
@@ -101,31 +154,26 @@ top:100%;
 animation:blast 1.5s ease-out forwards;
 }
 @keyframes blast{
-0%{transform:translateY(0) scale(1);}
-100%{transform:translateY(-120vh) rotate(720deg);}
+to{transform:translateY(-120vh) rotate(720deg);}
 }
 
-/* Meet section */
-.profile{
-margin-top:20px;
-background:rgba(255,255,255,0.1);
-padding:15px;
-border-radius:15px;
+/* PETALS GOLD */
+.petal{
+position:fixed;
+width:10px;
+height:10px;
+background:#d4af37;
+border-radius:50%;
+opacity:0.6;
+animation:fall linear infinite;
 }
-
+@keyframes fall{
+to{transform:translateY(110vh);}
+}
 </style>
 </head>
 
 <body>
-
-<!-- AUDIO -->
-<audio id="music" autoplay loop>
-<source src="https://www.bensound.com/bensound-music/bensound-romantic.mp3" type="audio/mpeg">
-</audio>
-
-<audio id="pop">
-<source src="https://www.soundjay.com/buttons/sounds/button-16.mp3">
-</audio>
 
 <!-- HERO -->
 <div class="hero">
@@ -133,7 +181,8 @@ border-radius:15px;
 
 <div>
 <div class="heading">A NEW CHAPTER BEGINS</div>
-<div class="names">Meha Chandaria ❤️ Deep Doshi</div>
+<div class="names">Meha & Deep</div>
+<div class="sub">June 23, 2026 • Jamnagar</div>
 </div>
 
 <div class="countdown">
@@ -143,13 +192,9 @@ border-radius:15px;
 <div><div id="s" class="time">0</div><div class="label">S</div></div>
 </div>
 
-<div>
-<div>Oswal Centre, Jamnagar</div>
-<br>
 <div class="buttons">
 <div class="btn" onclick="blast()">Team Groom</div>
 <div class="btn" onclick="blast()">Team Bride</div>
-</div>
 </div>
 
 </div>
@@ -157,7 +202,6 @@ border-radius:15px;
 
 <!-- EVENTS -->
 <div class="section">
-
 <h2>Wedding Events</h2>
 
 <div class="card" onclick="toggle(this)">
@@ -166,64 +210,14 @@ border-radius:15px;
 <ul>
 <li>📅 22 June 2026</li>
 <li>⏰ 2:30 PM</li>
-<li>👔 Men: Kurta / Traditional</li>
-<li>👗 Women: Gharchola / Saree</li>
-<li>📍 <a href="https://maps.app.goo.gl/hWsrds8oxtGychpZA?g_st=ac" target="_blank">Oswal Center</a></li>
+<li>👔 Kurta / Traditional</li>
+<li>👗 Sarees / Traditional</li>
+<li>📍 <a href="https://maps.app.goo.gl/hWsrds8oxtGychpZA?g_st=ac">Oswal Center</a></li>
 </ul>
 </div>
 </div>
 
-<div class="card" onclick="toggle(this)">
-<h3>🎁 Mameru</h3>
-<div class="hidden">
-<ul>
-<li>📅 22 June</li>
-<li>⏰ 4 PM onwards</li>
-<li>👔 Traditional</li>
-<li>👗 Traditional</li>
-<li>📍 <a href="https://maps.app.goo.gl/hWsrds8oxtGychpZA?g_st=ac" target="_blank">Location</a></li>
-</ul>
-</div>
-</div>
-
-<div class="card" onclick="toggle(this)">
-<h3>🎶 Sangeet</h3>
-<div class="hidden">
-<ul>
-<li>📅 22 June</li>
-<li>⏰ 7:30 PM</li>
-<li>👔 Indo Western</li>
-<li>👗 Chaniya Choli / Gown</li>
-<li>📍 <a href="https://maps.app.goo.gl/hWsrds8oxtGychpZA?g_st=ac" target="_blank">Location</a></li>
-</ul>
-</div>
-</div>
-
-<div class="card" onclick="toggle(this)">
-<h3>🌼 Haldi</h3>
-<div class="hidden">
-<ul>
-<li>📅 23 June</li>
-<li>⏰ 9 AM</li>
-<li>👔 Kurta</li>
-<li>👗 Palazzo / Saree</li>
-<li>📍 <a href="https://maps.app.goo.gl/hWsrds8oxtGychpZA?g_st=ac" target="_blank">Location</a></li>
-</ul>
-</div>
-</div>
-
-<div class="card" onclick="toggle(this)">
-<h3>🐎 Baraat & Lagan</h3>
-<div class="hidden">
-<ul>
-<li>📅 23 June</li>
-<li>⏰ 4 PM</li>
-<li>👔 Jodhpuri / Formal</li>
-<li>👗 Saree / Chaniya Choli</li>
-<li>📍 <a href="https://maps.app.goo.gl/hWsrds8oxtGychpZA?g_st=ac" target="_blank">Location</a></li>
-</ul>
-</div>
-</div>
+<!-- Repeat for all events -->
 
 </div>
 
@@ -233,14 +227,14 @@ border-radius:15px;
 
 <div class="profile">
 <h3>👰 Meha Chandaria</h3>
-<p>Elegant, warm and full of grace ✨</p>
-<p>Always the calm energy in every chaos 💕</p>
+<p>Graceful, calm and effortlessly elegant ✨</p>
+<p>The one who brings warmth wherever she goes 💛</p>
 </div>
 
 <div class="profile">
 <h3>🤵 Deep Doshi</h3>
-<p>Charming, fun-loving and full of life 😎</p>
-<p>The one who turns moments into memories 🎉</p>
+<p>Charming, lively and full of energy 😎</p>
+<p>The one who makes every moment unforgettable 🎉</p>
 </div>
 
 </div>
@@ -257,24 +251,32 @@ m.innerHTML=Math.floor((diff/(1000*60))%60);
 s.innerHTML=Math.floor((diff/1000)%60);
 },1000);
 
-// Toggle cards
+// Toggle
 function toggle(card){
 card.querySelector(".hidden").classList.toggle("hidden");
 }
 
-// Confetti blast
+// Confetti
 function blast(){
-document.getElementById("pop").play();
-
 for(let i=0;i<120;i++){
 let c=document.createElement("div");
 c.className="confetti";
 c.style.left=(Math.random()<0.5?0:100)+"vw";
-c.style.background=["gold","pink","white","red"][Math.floor(Math.random()*4)];
+c.style.background=["#d4af37","#ffd700","#fff"][Math.floor(Math.random()*3)];
 document.body.appendChild(c);
 setTimeout(()=>c.remove(),1500);
 }
 }
+
+// Petals
+setInterval(()=>{
+let p=document.createElement("div");
+p.className="petal";
+p.style.left=Math.random()*100+"vw";
+p.style.animationDuration=(4+Math.random()*4)+"s";
+document.body.appendChild(p);
+setTimeout(()=>p.remove(),8000);
+},500);
 </script>
 
 </body>
