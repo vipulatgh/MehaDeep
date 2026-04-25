@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Meha & Deep Wedding</title>
+<title>Meha ❤️ Deep Wedding</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
 
@@ -12,17 +12,35 @@
 
 body {
     font-family: 'Poppins', sans-serif;
-    background: #000;
     color: white;
+    background: linear-gradient(135deg,#7a0c2e,#c2185b,#e91e63);
+    overflow-x:hidden;
 }
 
-/* HERO SECTION */
+/* Floral overlay */
+body::before {
+    content:"";
+    position:fixed;
+    width:100%;
+    height:100%;
+    background:url('https://images.unsplash.com/photo-1525310072745-f49212b5ac6d?q=80&w=1200') center/cover;
+    opacity:0.2;
+    z-index:-1;
+}
+
+/* Floating animation */
+@keyframes float {
+    0% {transform: translateY(0);}
+    50% {transform: translateY(-10px);}
+    100% {transform: translateY(0);}
+}
+
+/* HERO */
 .hero {
-    height: 100vh;
+    height:100vh;
     display:flex;
     justify-content:center;
     align-items:center;
-    background:url('https://images.unsplash.com/photo-1606813907291-d86efa9b94db?q=80&w=1200') center/cover no-repeat;
 }
 
 .glass {
@@ -30,68 +48,93 @@ body {
     max-width:400px;
     height:85vh;
     background: rgba(255,255,255,0.15);
-    backdrop-filter: blur(15px);
+    backdrop-filter: blur(18px);
     border-radius:30px;
     padding:25px;
     display:flex;
     flex-direction:column;
     justify-content:space-between;
     text-align:center;
+    animation: float 5s ease-in-out infinite;
 }
 
-.heading {
-    letter-spacing:3px;
-    font-size:12px;
-}
-
+/* TEXT */
+.heading {letter-spacing:3px;font-size:12px;}
 .names {
-    font-family:'Playfair Display', serif;
+    font-family:'Playfair Display';
     font-size:28px;
 }
 
-.timer {
-    font-size:24px;
+/* COUNTDOWN */
+.countdown {
+    display:flex;
+    justify-content:space-around;
+    margin:20px 0;
 }
+.time-box {text-align:center;}
+.time {font-size:20px;font-weight:bold;}
+.label {font-size:10px;opacity:0.8;}
 
 /* BUTTONS */
-.buttons {
-    display:flex;
-    gap:10px;
-}
+.buttons {display:flex;gap:10px;}
 .btn {
     flex:1;
     padding:10px;
     border-radius:30px;
     border:1px solid white;
+    cursor:pointer;
+    transition:0.3s;
 }
+.btn:hover {background:rgba(255,255,255,0.2);}
 
-/* EVENTS */
-.section {
-    padding:40px 20px;
-}
+/* SECTION */
+.section {padding:40px 20px;}
 
 .day-title {
+    text-align:center;
     font-size:22px;
     margin-bottom:20px;
-    text-align:center;
 }
 
+/* EVENT CARDS */
 .card {
-    background: rgba(255,255,255,0.08);
     padding:15px;
     border-radius:15px;
     margin-bottom:15px;
 }
 
-.card h3 {
-    margin-bottom:5px;
+/* Different themes */
+.mandap {background:linear-gradient(135deg,#ff9a9e,#fad0c4);}
+.mameru {background:linear-gradient(135deg,#fbc2eb,#a6c1ee);}
+.sangeet {background:linear-gradient(135deg,#ff758c,#ff7eb3);}
+.haldi {background:linear-gradient(135deg,#fceabb,#f8b500);}
+.baraat {background:linear-gradient(135deg,#c471f5,#fa71cd);}
+
+.card h3 {color:black;}
+.card p {color:black;font-size:13px;}
+
+/* MAP LINK */
+.map-link {
+    text-align:center;
+    margin-top:10px;
+}
+.map-link a {
+    color:white;
+    text-decoration:underline;
 }
 
-.small {
-    font-size:13px;
-    opacity:0.9;
+/* CONFETTI */
+.confetti {
+    position:fixed;
+    width:10px;
+    height:10px;
+    background:red;
+    top:0;
+    animation: fall 2s linear forwards;
 }
-
+@keyframes fall {
+    to {transform: translateY(100vh) rotate(360deg);}
+}
 </style>
 </head>
 
@@ -99,83 +142,101 @@ body {
 
 <!-- HERO -->
 <div class="hero">
-    <div class="glass">
-        <div>
-            <div class="heading">A NEW CHAPTER BEGINS</div>
-            <div class="names">Meha Chandaria ❤️ Deep Doshi</div>
-        </div>
+<div class="glass">
 
-        <div id="countdown" class="timer">Loading...</div>
-
-        <div>
-            <div>Oswal Centre, Jamnagar, Gujarat</div>
-            <br>
-            <div class="buttons">
-                <div class="btn">Team Groom</div>
-                <div class="btn">Team Bride</div>
-            </div>
-        </div>
-    </div>
+<div>
+<div class="heading">A NEW CHAPTER BEGINS</div>
+<div class="names">Meha Chandaria ❤️ Deep Doshi</div>
 </div>
 
-<!-- DAY 1 -->
-<div class="section">
-    <div class="day-title">Day 1 – 22 June 2026</div>
-
-    <div class="card">
-        <h3>Mandap</h3>
-        <div class="small">2:30 PM • Keshav Hall</div>
-        <div class="small">Men: Kurta / Traditional</div>
-        <div class="small">Women: Gharchola / Saree / Traditional</div>
-    </div>
-
-    <div class="card">
-        <h3>Mameru</h3>
-        <div class="small">4:00 PM onwards</div>
-        <div class="small">Men: Kurta / Traditional</div>
-        <div class="small">Women: Gharchola / Saree / Traditional</div>
-    </div>
-
-    <div class="card">
-        <h3>Ring Ceremony & Sangeet</h3>
-        <div class="small">7:30 PM onwards</div>
-        <div class="small">Men: Kurta / Indo Western</div>
-        <div class="small">Women: Chaniya Choli / Gown / Saree</div>
-    </div>
+<div class="countdown">
+<div class="time-box"><div id="d" class="time">0</div><div class="label">D</div></div>
+<div class="time-box"><div id="h" class="time">0</div><div class="label">H</div></div>
+<div class="time-box"><div id="m" class="time">0</div><div class="label">M</div></div>
+<div class="time-box"><div id="s" class="time">0</div><div class="label">S</div></div>
 </div>
 
-<!-- DAY 2 -->
+<div>
+<div>Oswal Centre, Jamnagar</div>
+<div class="map-link">
+<a href="https://maps.app.goo.gl/hWsrds8oxtGychpZA?g_st=ac" target="_blank">View Location</a>
+</div>
+
+<br>
+
+<div class="buttons">
+<div class="btn" onclick="confetti()">Team Groom</div>
+<div class="btn" onclick="confetti()">Team Bride</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<!-- EVENTS -->
 <div class="section">
-    <div class="day-title">Day 2 – 23 June 2026</div>
+<div class="day-title">Day 1 – 22 June</div>
 
-    <div class="card">
-        <h3>Haldi</h3>
-        <div class="small">9:00 AM onwards</div>
-        <div class="small">Men: Kurta</div>
-        <div class="small">Women: Palazzo / Saree</div>
-    </div>
+<div class="card mandap">
+<h3>Mandap</h3>
+<p>2:30 PM • Keshav Hall</p>
+<p>Men: Kurta</p>
+<p>Women: Traditional Sarees</p>
+</div>
 
-    <div class="card">
-        <h3>Baraat & Lagan</h3>
-        <div class="small">4:00 PM onwards</div>
-        <div class="small">Men: Jodhpuri / Modi Coat</div>
-        <div class="small">Women: Saree / Chaniya Choli</div>
-    </div>
+<div class="card mameru">
+<h3>Mameru</h3>
+<p>4 PM onwards</p>
+</div>
+
+<div class="card sangeet">
+<h3>Ring Ceremony & Sangeet</h3>
+<p>7:30 PM onwards</p>
+</div>
+
+</div>
+
+<div class="section">
+<div class="day-title">Day 2 – 23 June</div>
+
+<div class="card haldi">
+<h3>Haldi</h3>
+<p>9 AM onwards</p>
+</div>
+
+<div class="card baraat">
+<h3>Baraat & Lagan</h3>
+<p>4 PM onwards</p>
+</div>
+
 </div>
 
 <script>
-const weddingDate = new Date("June 23, 2026 16:00:00").getTime();
+// Countdown
+const date = new Date("June 23, 2026 16:00:00").getTime();
 
 setInterval(()=>{
-    const now = new Date().getTime();
-    const diff = weddingDate - now;
+let now = new Date().getTime();
+let diff = date - now;
 
-    const d = Math.floor(diff/(1000*60*60*24));
-    const h = Math.floor((diff/(1000*60*60))%24);
-    const m = Math.floor((diff/(1000*60))%60);
-
-    document.getElementById("countdown").innerHTML = d+"d "+h+"h "+m+"m";
+document.getElementById("d").innerHTML = Math.floor(diff/(1000*60*60*24));
+document.getElementById("h").innerHTML = Math.floor((diff/(1000*60*60))%24);
+document.getElementById("m").innerHTML = Math.floor((diff/(1000*60))%60);
+document.getElementById("s").innerHTML = Math.floor((diff/1000)%60);
 },1000);
+
+// Confetti
+function confetti(){
+for(let i=0;i<40;i++){
+let c = document.createElement("div");
+c.className="confetti";
+c.style.left=Math.random()*100+"vw";
+c.style.background=["red","yellow","white","pink"][Math.floor(Math.random()*4)];
+document.body.appendChild(c);
+
+setTimeout(()=>c.remove(),2000);
+}
+}
 </script>
 
 </body>
