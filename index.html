@@ -3,7 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Meha ❤️ Deep Wedding</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins&display=swap" rel="stylesheet">
@@ -13,94 +12,73 @@
 
 body{
 font-family:'Poppins';
-background:linear-gradient(135deg,#0a1931,#0f3460);
+background:radial-gradient(circle,#0a1931,#020617);
 color:#d4af37;
 overflow-x:hidden;
 }
 
-/* ===================== */
-/* 💌 3D ENVELOPE */
-/* ===================== */
+/* ✨ shimmer */
+.shimmer{
+background:linear-gradient(90deg,#d4af37,#fff,#d4af37);
+-webkit-background-clip:text;
+color:transparent;
+animation:shine 3s linear infinite;
+}
+@keyframes shine{to{background-position:200%;}}
+
+/* 💌 intro */
 .intro{
 position:fixed;
-width:100%;
-height:100%;
-background:#0a1931;
+width:100%;height:100%;
+background:#020617;
 display:flex;
 justify-content:center;
 align-items:center;
 z-index:999;
-perspective:1000px;
+perspective:1200px;
 }
-
 .envelope{
-width:220px;
-height:140px;
+width:240px;height:150px;
 position:relative;
 cursor:pointer;
 transform-style:preserve-3d;
 }
-
 .flap{
-position:absolute;
-width:100%;
-height:100%;
+position:absolute;width:100%;height:100%;
 background:gold;
 clip-path:polygon(0 0,100% 0,50% 60%);
 transform-origin:top;
 transition:1s;
-z-index:2;
 }
-
 .body{
-position:absolute;
-width:100%;
-height:100%;
-background:#fff;
-border:2px solid gold;
+position:absolute;width:100%;height:100%;
+background:#fff;border:2px solid gold;
 }
-
 .letter{
-position:absolute;
-width:90%;
-height:90%;
+position:absolute;width:90%;height:90%;
+top:5%;left:5%;
 background:#fff;
-top:5%;
-left:5%;
-transform:translateY(50px);
-opacity:0;
-transition:1s;
-display:flex;
-align-items:center;
-justify-content:center;
-color:black;
-font-size:14px;
+display:flex;align-items:center;justify-content:center;
+transform:translateY(60px);
+opacity:0;transition:1s;
 }
+.open .flap{transform:rotateX(-180deg);}
+.open .letter{transform:translateY(-140px);opacity:1;}
 
-/* open animation */
-.open .flap{
-transform:rotateX(180deg);
-}
-
-.open .letter{
-transform:translateY(-120px);
-opacity:1;
-}
-
-/* ===================== */
 /* HERO */
-/* ===================== */
 .hero{
 display:none;
 height:100vh;
 display:flex;
 justify-content:center;
 align-items:center;
+animation:fade 1.5s ease;
 }
+@keyframes fade{from{opacity:0;}}
 
+/* glass */
 .glass{
-width:90%;
-max-width:400px;
+width:90%;max-width:420px;
 height:85vh;
 background:rgba(255,255,255,0.05);
 border:1px solid gold;
@@ -112,64 +90,47 @@ justify-content:space-between;
 text-align:center;
 }
 
+/* text */
 .names{
 font-family:'Great Vibes';
-font-size:36px;
-color:#ffd700;
+font-size:38px;
 }
 
 /* countdown */
 .countdown-box{
 border:1px solid gold;
-padding:10px;
 border-radius:15px;
+padding:10px;
 }
-
 .countdown{
 display:flex;
 justify-content:space-around;
 }
 
-.time{font-size:18px;}
-.label{font-size:10px;}
-
-/* ===================== */
-/* CONFETTI */
-/* ===================== */
-
-/* burst particles */
-.confetti{
-position:fixed;
-width:6px;
-height:6px;
-bottom:0;
-border-radius:50%;
-animation:burst 1s ease-out forwards;
+/* buttons */
+button{
+padding:10px;
+border-radius:20px;
+border:1px solid gold;
+background:none;
+color:#d4af37;
+cursor:pointer;
 }
 
-@keyframes burst{
-0%{transform:translate(0,0);}
-100%{transform:translate(var(--x),var(--y));}
+/* section */
+.section{
+padding:40px 20px;
+text-align:center;
+opacity:0;
+transform:translateY(20px);
+transition:0.6s;
+}
+.section.show{
+opacity:1;
+transform:translateY(0);
 }
 
-/* falling particles */
-.fall{
-position:fixed;
-top:-10px;
-border-radius:50%;
-animation:fall linear forwards;
-}
-
-@keyframes fall{
-to{transform:translateY(110vh) rotate(360deg);}
-}
-
-/* ===================== */
-/* EVENTS + SECTIONS */
-/* ===================== */
-
-.section{padding:40px 20px;text-align:center;}
-
+/* cards */
 .card{
 background:rgba(255,255,255,0.05);
 border:1px solid rgba(212,175,55,0.3);
@@ -178,7 +139,6 @@ border-radius:15px;
 margin:15px 0;
 cursor:pointer;
 }
-
 .hidden{display:none;}
 
 ul{list-style:none;text-align:left;}
@@ -186,59 +146,130 @@ li{margin:5px 0;}
 
 a{color:#ffd700;}
 
+/* gallery */
+.gallery img{
+width:100%;
+border-radius:15px;
+margin:10px 0;
+}
+
+/* canvas */
+canvas{
+position:fixed;
+top:0;
+pointer-events:none;
+z-index:999;
+}
+
 </style>
 </head>
 
 <body>
 
-<!-- 💌 INTRO -->
+<canvas id="confetti"></canvas>
+
+<!-- 💌 intro -->
 <div class="intro" id="intro">
 <div class="envelope" onclick="openInvite(this)">
 <div class="flap"></div>
 <div class="body"></div>
-<div class="letter">You're Invited 💌</div>
+<div class="letter shimmer">You're Invited 💌</div>
 </div>
 </div>
 
 <!-- HERO -->
 <div class="hero" id="main">
-
 <div class="glass">
-<div class="names">Meha ❤️ Deep</div>
+<div class="names shimmer">Meha ❤️ Deep</div>
 
 <div class="countdown-box">
 <div class="countdown">
-<div><div id="d" class="time">0</div><div class="label">D</div></div>
-<div><div id="h" class="time">0</div><div class="label">H</div></div>
-<div><div id="m" class="time">0</div><div class="label">M</div></div>
-<div><div id="s" class="time">0</div><div class="label">S</div></div>
+<div><div id="d">0</div><small>D</small></div>
+<div><div id="h">0</div><small>H</small></div>
+<div><div id="m">0</div><small>M</small></div>
+<div><div id="s">0</div><small>S</small></div>
 </div>
 </div>
 
 <div>
-📍 <a href="https://maps.app.goo.gl/hWsrds8oxtGychpZA?g_st=ac" target="_blank">
+📍 <a href="https://maps.app.goo.gl/hWsrds8oxtGychpZA" target="_blank">
 Oswal Center, Jamnagar
 </a>
 </div>
 
-<div style="margin-top:10px;">
-<button onclick="blast()">Team Groom</button>
-<button onclick="blast()">Team Bride</button>
+<div>
+<button onclick="startConfetti()">Team Groom</button>
+<button onclick="startConfetti()">Team Bride</button>
+</div>
+</div>
 </div>
 
-</div>
+<!-- 👰🤵 MEET -->
+<div class="section">
+<h2>Meet the Couple</h2>
+<p>👰 Meha – Elegant & graceful ✨</p>
+<p>🤵 Deep – Fun & full of life 😎</p>
 </div>
 
 <!-- EVENTS -->
-<div class="section" id="events" style="display:none;">
+<div class="section">
 <h2>Wedding Events</h2>
 
+<!-- Mandap -->
 <div class="card" onclick="toggle(this)">
 <h3>🎊 Mandap</h3>
 <div class="hidden">
 <ul>
-<li>📅 22 June</li>
+<li>📅 22 June 2026</li>
 <li>⏰ 2:30 PM</li>
+<li>📍 <a href="https://maps.app.goo.gl/hWsrds8oxtGychpZA">Location</a></li>
+</ul>
+</div>
+</div>
+
+<!-- Mameru -->
+<div class="card" onclick="toggle(this)">
+<h3>🎁 Mameru</h3>
+<div class="hidden">
+<ul>
+<li>📅 22 June</li>
+<li>⏰ 4 PM</li>
+<li>📍 <a href="https://maps.app.goo.gl/hWsrds8oxtGychpZA">Location</a></li>
+</ul>
+</div>
+</div>
+
+<!-- Sangeet -->
+<div class="card" onclick="toggle(this)">
+<h3>🎶 Sangeet</h3>
+<div class="hidden">
+<ul>
+<li>📅 22 June</li>
+<li>⏰ 7:30 PM</li>
+<li>📍 <a href="https://maps.app.goo.gl/hWsrds8oxtGychpZA">Location</a></li>
+</ul>
+</div>
+</div>
+
+<!-- Haldi -->
+<div class="card" onclick="toggle(this)">
+<h3>🌼 Haldi</h3>
+<div class="hidden">
+<ul>
+<li>📅 23 June</li>
+<li>⏰ 9 AM</li>
+<li>📍 <a href="https://maps.app.goo.gl/hWsrds8oxtGychpZA">Location</a></li>
+</ul>
+</div>
+</div>
+
+<!-- Baraat -->
+<div class="card" onclick="toggle(this)">
+<h3>🐎 Baraat & Lagan</h3>
+<div class="hidden">
+<ul>
+<li>📅 23 June</li>
+<li>⏰ 4 PM</li>
 <li>📍 <a href="https://maps.app.goo.gl/hWsrds8oxtGychpZA">Location</a></li>
 </ul>
 </div>
@@ -246,65 +277,71 @@ Oswal Center, Jamnagar
 
 </div>
 
+<!-- 📸 gallery -->
+<div class="section gallery">
+<h2>Our Moments</h2>
+<img src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486">
+<img src="https://images.unsplash.com/photo-1519741497674-611481863552">
+</div>
+
 <script>
 
-/* 💌 OPEN ANIMATION */
+/* open invite */
 function openInvite(el){
 el.classList.add("open");
 
 setTimeout(()=>{
 document.getElementById("intro").style.display="none";
 document.getElementById("main").style.display="flex";
-document.getElementById("events").style.display="block";
+document.querySelectorAll(".section").forEach(s=>s.classList.add("show"));
 },1200);
 }
 
-/* 🎊 CONFETTI */
-function blast(){
-
-/* burst from corners */
-for(let i=0;i<100;i++){
-let c=document.createElement("div");
-c.className="confetti";
-
-let side=Math.random()<0.5?0:window.innerWidth;
-c.style.left=side+"px";
-
-let x=(Math.random()*300-150);
-let y=-(Math.random()*500+200);
-
-c.style.setProperty('--x',x+'px');
-c.style.setProperty('--y',y+'px');
-
-c.style.background=["gold","white","pink"][Math.floor(Math.random()*3)];
-
-document.body.appendChild(c);
-
-setTimeout(()=>c.remove(),1000);
+/* toggle */
+function toggle(card){
+card.querySelector(".hidden").classList.toggle("hidden");
 }
 
-/* slow falling particles */
-for(let i=0;i<300;i++){
-let f=document.createElement("div");
-f.className="fall";
+/* canvas confetti */
+const canvas=document.getElementById("confetti");
+const ctx=canvas.getContext("2d");
+canvas.width=window.innerWidth;
+canvas.height=window.innerHeight;
 
-f.style.left=Math.random()*100+"vw";
-f.style.width=f.style.height=(Math.random()*6+2)+"px";
+let confetti=[];
 
-f.style.background=["gold","#ffd700","white"][Math.floor(Math.random()*3)];
-f.style.opacity=Math.random();
-
-f.style.animationDuration=(4+Math.random()*6)+"s";
-
-document.body.appendChild(f);
-
-setTimeout(()=>f.remove(),10000);
+function startConfetti(){
+for(let i=0;i<400;i++){
+confetti.push({
+x:Math.random()*canvas.width,
+y:Math.random()*canvas.height-500,
+r:Math.random()*6+2,
+color:["#ffd700","#fff","#ff4081"][Math.floor(Math.random()*3)],
+speed:2+Math.random()*3
+});
 }
 }
+
+function draw(){
+ctx.clearRect(0,0,canvas.width,canvas.height);
+
+confetti.forEach((c,i)=>{
+ctx.fillStyle=c.color;
+ctx.fillRect(c.x,c.y,c.r,c.r);
+
+c.y+=c.speed;
+
+if(c.y>canvas.height){
+confetti.splice(i,1);
+}
+});
+
+requestAnimationFrame(draw);
+}
+draw();
 
 /* countdown */
 const date=new Date("June 23, 2026 16:00:00").getTime();
-
 setInterval(()=>{
 let now=new Date().getTime();
 let diff=date-now;
@@ -314,11 +351,6 @@ h.innerHTML=Math.floor((diff/(1000*60*60))%24);
 m.innerHTML=Math.floor((diff/(1000*60))%60);
 s.innerHTML=Math.floor((diff/1000)%60);
 },1000);
-
-/* toggle */
-function toggle(card){
-card.querySelector(".hidden").classList.toggle("hidden");
-}
 
 </script>
 
