@@ -141,6 +141,23 @@ font-size:40px;
 font-weight:700;
 }
 
+/* COUNTDOWN HEADER (FIXED POSITION) */
+.countdown-header{
+margin-top:auto;
+margin-bottom:10px;
+}
+
+.save-date{
+font-weight:700;
+font-size:16px;
+}
+
+.countdown-text{
+font-weight:600;
+font-size:14px;
+opacity:0.9;
+}
+
 /* COUNTDOWN */
 .countdown-box{
 border:1px solid gold;
@@ -225,8 +242,11 @@ z-index:999;
 
 <div class="names shimmer">Meha ❤️ Deep</div>
 
-<div style="font-weight:700;">Save the Date – 23 June 2026</div>
-<div style="font-weight:600;">Countdown Begins</div>
+<!-- ✅ FIXED POSITION -->
+<div class="countdown-header">
+  <div class="save-date">Save the Date – 23 June 2026</div>
+  <div class="countdown-text">Countdown Begins</div>
+</div>
 
 <div class="countdown-box">
 <div class="countdown">
