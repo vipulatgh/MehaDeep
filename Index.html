@@ -1,109 +1,154 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Wedding Invitation</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meha ❤️ Deep</title>
 
-  <!-- Google Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Poppins&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
 
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Poppins', sans-serif;
-      background: #fdf6f0;
-      text-align: center;
-      color: #333;
-    }
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-    .container {
-      padding: 40px 20px;
-    }
+body {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: url('https://images.unsplash.com/photo-1606813907291-d86efa9b94db?q=80&w=1200') center/cover no-repeat;
+  font-family: 'Poppins', sans-serif;
+}
 
-    h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: 2.5rem;
-      margin-bottom: 10px;
-    }
+/* 9:16 container */
+.story {
+  width: 360px;
+  height: 640px;
+  position: relative;
+}
 
-    .names {
-      font-size: 2rem;
-      margin: 20px 0;
-      color: #b76e79;
-    }
+/* Glass card */
+.card {
+  position: absolute;
+  inset: 0;
+  border-radius: 30px;
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(255,255,255,0.3);
+  padding: 30px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
 
-    .details {
-      font-size: 1.1rem;
-      margin: 15px 0;
-    }
+/* Heading */
+.heading {
+  text-align: center;
+  font-family: 'Playfair Display', serif;
+  letter-spacing: 2px;
+  font-size: 18px;
+}
 
-    .card {
-      background: white;
-      border-radius: 15px;
-      padding: 25px;
-      margin: 20px auto;
-      max-width: 400px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    }
+/* Names */
+.names {
+  text-align: center;
+  font-size: 28px;
+  font-family: 'Playfair Display', serif;
+  margin-top: 10px;
+}
 
-    .footer {
-      margin-top: 30px;
-      font-size: 0.9rem;
-      color: #777;
-    }
+/* Countdown */
+.countdown {
+  text-align: center;
+  margin: 20px 0;
+}
 
-    .btn {
-      display: inline-block;
-      margin-top: 20px;
-      padding: 10px 20px;
-      background: #b76e79;
-      color: white;
-      border-radius: 25px;
-      text-decoration: none;
-    }
+.time {
+  font-size: 28px;
+  font-weight: 600;
+}
 
-  </style>
+/* Details */
+.details {
+  text-align: center;
+  font-size: 13px;
+  opacity: 0.9;
+}
+
+/* Buttons */
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.btn {
+  flex: 1;
+  padding: 10px;
+  border-radius: 30px;
+  border: 1px solid rgba(255,255,255,0.6);
+  text-align: center;
+  backdrop-filter: blur(10px);
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  background: rgba(255,255,255,0.2);
+}
+
+</style>
 </head>
 
 <body>
 
-  <div class="container">
+<div class="story">
+  <div class="card">
 
-    <h1>You're Invited 💍</h1>
+    <div>
+      <div class="heading">A NEW CHAPTER BEGINS</div>
+      <div class="names">Meha & Deep</div>
+    </div>
 
-    <div class="names">
-      Vipul ❤️ Partner Name
+    <div class="countdown">
+      <div id="timer" class="time">Loading...</div>
     </div>
 
     <div class="details">
-      Together with their families,<br>
-      request the pleasure of your presence
+      Tuesday • 2:31 PM <br>
+      Oswal Center, Jamnagar, Gujarat
     </div>
 
-    <div class="card">
-      <h2>Wedding Ceremony</h2>
-      <p>📅 6 February 2026</p>
-      <p>⏰ 2:30 PM</p>
-      <p>📍 Venue Name, City</p>
-    </div>
-
-    <div class="card">
-      <h2>Reception</h2>
-      <p>📅 6 February 2026</p>
-      <p>⏰ 12:30 PM</p>
-      <p>📍 Venue Name, City</p>
-    </div>
-
-    <a class="btn" href="https://maps.google.com" target="_blank">
-      View Location
-    </a>
-
-    <div class="footer">
-      #JabVMetP
+    <div class="buttons">
+      <div class="btn">Team Groom</div>
+      <div class="btn">Team Bride</div>
     </div>
 
   </div>
+</div>
+
+<script>
+// SET YOUR WEDDING DATE HERE
+const weddingDate = new Date("Feb 6, 2026 14:31:00").getTime();
+
+const timer = document.getElementById("timer");
+
+setInterval(() => {
+  const now = new Date().getTime();
+  const diff = weddingDate - now;
+
+  const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+  const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+  const minutes = Math.floor((diff / (1000 * 60)) % 60);
+
+  timer.innerHTML = `${days}d ${hours}h ${minutes}m`;
+
+}, 1000);
+</script>
 
 </body>
 </html>
