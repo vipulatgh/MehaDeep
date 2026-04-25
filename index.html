@@ -26,7 +26,7 @@ animation:shine 3s linear infinite;
 }
 @keyframes shine{to{background-position:200%;}}
 
-/* 💌 ENVELOPE */
+/* envelope */
 .intro{
 position:fixed;
 width:100%;
@@ -82,7 +82,7 @@ transition:1s;
 .open .flap{transform:rotateX(-180deg);}
 .open .letter{transform:translateY(-150px);opacity:1;}
 
-/* HERO */
+/* hero */
 .hero{
 display:none;
 height:100vh;
@@ -91,7 +91,7 @@ justify-content:center;
 align-items:center;
 }
 
-/* 💎 GLASS CARD */
+/* glass card */
 .glass{
 position:relative;
 width:90%;
@@ -107,7 +107,7 @@ justify-content:space-between;
 text-align:center;
 }
 
-/* IMAGE */
+/* image */
 .glass::before{
 content:"";
 position:absolute;
@@ -117,7 +117,7 @@ background:url('IMG-20260425-WA0000.jpg') center/cover no-repeat;
 z-index:0;
 }
 
-/* VIGNETTE */
+/* vignette */
 .glass::after{
 content:"";
 position:absolute;
@@ -127,24 +127,25 @@ background:radial-gradient(circle, rgba(0,0,0,0.2) 40%, rgba(0,0,0,0.85) 100%);
 z-index:1;
 }
 
-/* CONTENT */
+/* content */
 .glass *{
 position:relative;
 z-index:2;
 text-shadow:0 2px 6px rgba(0,0,0,0.8);
 }
 
-/* TEXT */
+/* names */
 .names{
 font-family:'Great Vibes';
 font-size:40px;
 font-weight:700;
 }
 
-/* COUNTDOWN HEADER (FIXED POSITION) */
+/* countdown header (clean spacing) */
 .countdown-header{
 margin-top:auto;
-margin-bottom:10px;
+margin-bottom:8px;
+line-height:1.4;
 }
 
 .save-date{
@@ -155,10 +156,9 @@ font-size:16px;
 .countdown-text{
 font-weight:600;
 font-size:14px;
-opacity:0.9;
 }
 
-/* COUNTDOWN */
+/* countdown */
 .countdown-box{
 border:1px solid gold;
 border-radius:15px;
@@ -174,7 +174,17 @@ font-size:18px;
 
 small{font-weight:600;}
 
-/* BUTTON */
+/* tick animation */
+.tick{
+animation:tickAnim 0.4s ease;
+}
+@keyframes tickAnim{
+0%{transform:scale(1);opacity:0.7;}
+50%{transform:scale(1.2);opacity:1;}
+100%{transform:scale(1);}
+}
+
+/* buttons */
 button{
 padding:10px;
 border-radius:20px;
@@ -185,7 +195,7 @@ font-weight:600;
 cursor:pointer;
 }
 
-/* SECTION */
+/* sections */
 .section{
 padding:40px 20px;
 text-align:center;
@@ -198,7 +208,7 @@ opacity:1;
 transform:translateY(0);
 }
 
-/* CARDS */
+/* cards */
 .card{
 background:rgba(0,0,0,0.4);
 border:1px solid rgba(212,175,55,0.3);
@@ -227,7 +237,6 @@ z-index:999;
 
 <canvas id="confetti"></canvas>
 
-<!-- 💌 INTRO -->
 <div class="intro" id="intro">
 <div class="envelope" onclick="openInvite(this)">
 <div class="flap"></div>
@@ -236,13 +245,11 @@ z-index:999;
 </div>
 </div>
 
-<!-- HERO -->
 <div class="hero" id="main">
 <div class="glass">
 
 <div class="names shimmer">Meha ❤️ Deep</div>
 
-<!-- ✅ FIXED POSITION -->
 <div class="countdown-header">
   <div class="save-date">Save the Date – 23 June 2026</div>
   <div class="countdown-text">Countdown Begins</div>
@@ -275,14 +282,12 @@ Oswal Center, Jamnagar
 </div>
 </div>
 
-<!-- 👰🤵 -->
 <div class="section">
 <h2>Meet the Couple</h2>
 <p>👰 Meha – Elegant & graceful ✨</p>
 <p>🤵 Deep – Fun & full of life 😎</p>
 </div>
 
-<!-- EVENTS -->
 <div class="section">
 <h2>Wedding Events</h2>
 
@@ -394,16 +399,37 @@ requestAnimationFrame(draw);
 }
 draw();
 
-/* countdown */
+/* countdown with animation */
 const date=new Date("June 23, 2026 16:00:00").getTime();
+
+let prev={d:null,h:null,m:null,s:null};
+
 setInterval(()=>{
 let now=new Date().getTime();
 let diff=date-now;
-d.innerHTML=Math.floor(diff/(1000*60*60*24));
-h.innerHTML=Math.floor((diff/(1000*60*60))%24);
-m.innerHTML=Math.floor((diff/(1000*60))%60);
-s.innerHTML=Math.floor((diff/1000)%60);
+
+let newD=Math.floor(diff/(1000*60*60*24));
+let newH=Math.floor((diff/(1000*60*60))%24);
+let newM=Math.floor((diff/(1000*60))%60);
+let newS=Math.floor((diff/1000)%60);
+
+update("d",newD,"d");
+update("h",newH,"h");
+update("m",newM,"m");
+update("s",newS,"s");
+
 },1000);
+
+function update(id,value,key){
+let el=document.getElementById(id);
+if(prev[key]!==value){
+el.classList.remove("tick");
+void el.offsetWidth;
+el.classList.add("tick");
+el.innerHTML=value;
+prev[key]=value;
+}
+}
 </script>
 
 </body>
