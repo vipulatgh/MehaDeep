@@ -3,102 +3,121 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Meha ❤️ Deep</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+<title>Meha & Deep | Wedding Invite</title>
 
 <style>
+:root {
+    --glass: rgba(255, 255, 255, 0.15);
+    --border: rgba(255, 255, 255, 0.3);
+    --text: #ffffff;
+}
+
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
 }
 
-body {
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: url('https://images.unsplash.com/photo-1606813907291-d86efa9b94db?q=80&w=1200') center/cover no-repeat;
-  font-family: 'Poppins', sans-serif;
+body, html {
+    height: 100%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #000;
 }
 
-/* 9:16 container */
-.story {
-  width: 360px;
-  height: 640px;
-  position: relative;
+/* Background */
+.bg-image {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: url('https://images.unsplash.com/photo-1606813907291-d86efa9b94db?q=80&w=1200') center/cover no-repeat;
+    filter: brightness(0.75);
+    z-index: -1;
 }
 
-/* Glass card */
-.card {
-  position: absolute;
-  inset: 0;
-  border-radius: 30px;
-  background: rgba(255,255,255,0.15);
-  backdrop-filter: blur(15px);
-  border: 1px solid rgba(255,255,255,0.3);
-  padding: 30px;
-  color: white;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+/* Glass Container */
+.container {
+    width: 90%;
+    max-width: 400px;
+    height: 85vh;
+    background: var(--glass);
+    backdrop-filter: blur(15px);
+    border: 1px solid var(--border);
+    border-radius: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 30px 20px;
+    color: var(--text);
+    text-align: center;
 }
 
-/* Heading */
-.heading {
-  text-align: center;
-  font-family: 'Playfair Display', serif;
-  letter-spacing: 2px;
-  font-size: 18px;
+/* Header */
+.header-text {
+    letter-spacing: 3px;
+    font-size: 0.8rem;
 }
 
 /* Names */
 .names {
-  text-align: center;
-  font-size: 28px;
-  font-family: 'Playfair Display', serif;
-  margin-top: 10px;
+    font-size: 2.5rem;
+    margin: 20px 0;
+}
+
+/* Sub text */
+.sub-text {
+    font-size: 0.9rem;
+    opacity: 0.9;
 }
 
 /* Countdown */
-.countdown {
-  text-align: center;
-  margin: 20px 0;
+.countdown-container {
+    display: flex;
+    justify-content: space-around;
+    margin: 20px 0;
+}
+
+.time-box {
+    text-align: center;
 }
 
 .time {
-  font-size: 28px;
-  font-weight: 600;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.label {
+    font-size: 0.7rem;
+    opacity: 0.8;
 }
 
 /* Details */
 .details {
-  text-align: center;
-  font-size: 13px;
-  opacity: 0.9;
+    font-size: 0.85rem;
+    line-height: 1.5;
 }
 
 /* Buttons */
 .buttons {
-  display: flex;
-  justify-content: space-between;
-  gap: 10px;
+    display: flex;
+    gap: 10px;
 }
 
 .btn {
-  flex: 1;
-  padding: 10px;
-  border-radius: 30px;
-  border: 1px solid rgba(255,255,255,0.6);
-  text-align: center;
-  backdrop-filter: blur(10px);
-  cursor: pointer;
-  transition: 0.3s;
+    flex: 1;
+    padding: 10px;
+    border-radius: 25px;
+    border: 1px solid white;
+    background: transparent;
+    color: white;
+    cursor: pointer;
 }
 
 .btn:hover {
-  background: rgba(255,255,255,0.2);
+    background: rgba(255,255,255,0.2);
 }
 
 </style>
@@ -106,46 +125,61 @@ body {
 
 <body>
 
-<div class="story">
-  <div class="card">
+<div class="bg-image"></div>
+
+<div class="container">
 
     <div>
-      <div class="heading">A NEW CHAPTER BEGINS</div>
-      <div class="names">Meha & Deep</div>
+        <div class="header-text">A NEW CHAPTER BEGINS</div>
+        <div class="names">Meha & Deep</div>
+        <div class="sub-text">Together with their families invite you</div>
     </div>
 
-    <div class="countdown">
-      <div id="timer" class="time">Loading...</div>
+    <!-- Countdown -->
+    <div class="countdown-container">
+        <div class="time-box">
+            <div id="days" class="time">0</div>
+            <div class="label">Days</div>
+        </div>
+        <div class="time-box">
+            <div id="hours" class="time">0</div>
+            <div class="label">Hours</div>
+        </div>
+        <div class="time-box">
+            <div id="minutes" class="time">0</div>
+            <div class="label">Minutes</div>
+        </div>
     </div>
 
+    <!-- Details -->
     <div class="details">
-      Tuesday • 2:31 PM <br>
-      Oswal Center, Jamnagar, Gujarat
+        Tuesday • 2:31 PM <br>
+        Oswal Center, Jamnagar, Gujarat
     </div>
 
+    <!-- Buttons -->
     <div class="buttons">
-      <div class="btn">Team Groom</div>
-      <div class="btn">Team Bride</div>
+        <div class="btn">Team Groom</div>
+        <div class="btn">Team Bride</div>
     </div>
 
-  </div>
 </div>
 
 <script>
-// SET YOUR WEDDING DATE HERE
+// Wedding date
 const weddingDate = new Date("Feb 6, 2026 14:31:00").getTime();
 
-const timer = document.getElementById("timer");
-
 setInterval(() => {
-  const now = new Date().getTime();
-  const diff = weddingDate - now;
+    const now = new Date().getTime();
+    const diff = weddingDate - now;
 
-  const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-  const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-  const minutes = Math.floor((diff / (1000 * 60)) % 60);
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+    const minutes = Math.floor((diff / (1000 * 60)) % 60);
 
-  timer.innerHTML = `${days}d ${hours}h ${minutes}m`;
+    document.getElementById("days").innerHTML = days;
+    document.getElementById("hours").innerHTML = hours;
+    document.getElementById("minutes").innerHTML = minutes;
 
 }, 1000);
 </script>
