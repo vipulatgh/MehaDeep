@@ -17,7 +17,7 @@ color:#d4af37;
 overflow-x:hidden;
 }
 
-/* ✨ shimmer */
+/* ✨ shimmer gold */
 .shimmer{
 background:linear-gradient(90deg,#d4af37,#fff,#d4af37);
 -webkit-background-clip:text;
@@ -26,10 +26,13 @@ animation:shine 3s linear infinite;
 }
 @keyframes shine{to{background-position:200%;}}
 
-/* 💌 BIGGER ENVELOPE */
+/* ===================== */
+/* 💌 ENVELOPE FIXED */
+/* ===================== */
 .intro{
 position:fixed;
-width:100%;height:100%;
+width:100%;
+height:100%;
 background:#020617;
 display:flex;
 justify-content:center;
@@ -38,6 +41,7 @@ z-index:999;
 perspective:1200px;
 }
 
+/* envelope base */
 .envelope{
 width:300px;
 height:200px;
@@ -46,44 +50,63 @@ cursor:pointer;
 transform-style:preserve-3d;
 }
 
-.flap{
-position:absolute;
-width:100%;
-height:100%;
-background:gold;
-clip-path:polygon(0 0,100% 0,50% 60%);
-transform-origin:top;
-transition:1s;
-}
-
+/* navy body */
 .body{
 position:absolute;
 width:100%;
 height:100%;
-background:#fff;
+background:#0a1931;
 border:2px solid gold;
+border-radius:6px;
 }
 
+/* flap */
+.flap{
+position:absolute;
+width:100%;
+height:100%;
+background:#0f3460;
+clip-path:polygon(0 0,100% 0,50% 60%);
+transform-origin:top;
+border-bottom:2px solid gold;
+transition:1s;
+z-index:2;
+}
+
+/* letter */
 .letter{
 position:absolute;
 width:90%;
-height:90%;
-top:5%;left:5%;
-background:#fff;
+height:85%;
+top:7%;
+left:5%;
+background:#0a1931;
+border:1px solid gold;
 display:flex;
 align-items:center;
 justify-content:center;
-font-size:18px;
+font-size:20px;
 font-weight:bold;
-transform:translateY(70px);
+color:#ffd700;
+transform:translateY(60px);
 opacity:0;
 transition:1s;
+border-radius:4px;
 }
 
-.open .flap{transform:rotateX(-180deg);}
-.open .letter{transform:translateY(-160px);opacity:1;}
+/* open animation */
+.open .flap{
+transform:rotateX(-180deg);
+}
 
+.open .letter{
+transform:translateY(-150px);
+opacity:1;
+}
+
+/* ===================== */
 /* HERO */
+/* ===================== */
 .hero{
 display:none;
 height:100vh;
@@ -96,7 +119,8 @@ animation:fade 1.5s ease;
 
 /* glass */
 .glass{
-width:90%;max-width:420px;
+width:90%;
+max-width:420px;
 height:85vh;
 background:rgba(255,255,255,0.05);
 border:1px solid gold;
@@ -108,7 +132,7 @@ justify-content:space-between;
 text-align:center;
 }
 
-/* text */
+/* names */
 .names{
 font-family:'Great Vibes';
 font-size:38px;
@@ -178,7 +202,7 @@ z-index:999;
 
 <canvas id="confetti"></canvas>
 
-<!-- 💌 intro -->
+<!-- 💌 INTRO -->
 <div class="intro" id="intro">
 <div class="envelope" onclick="openInvite(this)">
 <div class="flap"></div>
@@ -190,6 +214,7 @@ z-index:999;
 <!-- HERO -->
 <div class="hero" id="main">
 <div class="glass">
+
 <div class="names shimmer">Meha ❤️ Deep</div>
 
 <div class="countdown-box">
@@ -211,10 +236,11 @@ Oswal Center, Jamnagar
 <button onclick="startConfetti()">Team Groom</button>
 <button onclick="startConfetti()">Team Bride</button>
 </div>
+
 </div>
 </div>
 
-<!-- 👰🤵 MEET -->
+<!-- 👰🤵 -->
 <div class="section">
 <h2>Meet the Couple</h2>
 <p>👰 Meha – Elegant & graceful ✨</p>
