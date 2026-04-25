@@ -3,121 +3,93 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Meha & Deep | Wedding Invite</title>
+<title>Meha & Deep Wedding</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
 
 <style>
-:root {
-    --glass: rgba(255, 255, 255, 0.15);
-    --border: rgba(255, 255, 255, 0.3);
-    --text: #ffffff;
-}
+* {margin:0;padding:0;box-sizing:border-box;}
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-}
-
-body, html {
-    height: 100%;
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #000;
-}
-
-/* Background */
-.bg-image {
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    background: url('https://images.unsplash.com/photo-1606813907291-d86efa9b94db?q=80&w=1200') center/cover no-repeat;
-    filter: brightness(0.75);
-    z-index: -1;
-}
-
-/* Glass Container */
-.container {
-    width: 90%;
-    max-width: 400px;
-    height: 85vh;
-    background: var(--glass);
-    backdrop-filter: blur(15px);
-    border: 1px solid var(--border);
-    border-radius: 30px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    padding: 30px 20px;
-    color: var(--text);
-    text-align: center;
-}
-
-/* Header */
-.header-text {
-    letter-spacing: 3px;
-    font-size: 0.8rem;
-}
-
-/* Names */
-.names {
-    font-size: 2.5rem;
-    margin: 20px 0;
-}
-
-/* Sub text */
-.sub-text {
-    font-size: 0.9rem;
-    opacity: 0.9;
-}
-
-/* Countdown */
-.countdown-container {
-    display: flex;
-    justify-content: space-around;
-    margin: 20px 0;
-}
-
-.time-box {
-    text-align: center;
-}
-
-.time {
-    font-size: 1.5rem;
-    font-weight: bold;
-}
-
-.label {
-    font-size: 0.7rem;
-    opacity: 0.8;
-}
-
-/* Details */
-.details {
-    font-size: 0.85rem;
-    line-height: 1.5;
-}
-
-/* Buttons */
-.buttons {
-    display: flex;
-    gap: 10px;
-}
-
-.btn {
-    flex: 1;
-    padding: 10px;
-    border-radius: 25px;
-    border: 1px solid white;
-    background: transparent;
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #000;
     color: white;
-    cursor: pointer;
 }
 
-.btn:hover {
-    background: rgba(255,255,255,0.2);
+/* HERO SECTION */
+.hero {
+    height: 100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:url('https://images.unsplash.com/photo-1606813907291-d86efa9b94db?q=80&w=1200') center/cover no-repeat;
+}
+
+.glass {
+    width:90%;
+    max-width:400px;
+    height:85vh;
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(15px);
+    border-radius:30px;
+    padding:25px;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    text-align:center;
+}
+
+.heading {
+    letter-spacing:3px;
+    font-size:12px;
+}
+
+.names {
+    font-family:'Playfair Display', serif;
+    font-size:28px;
+}
+
+.timer {
+    font-size:24px;
+}
+
+/* BUTTONS */
+.buttons {
+    display:flex;
+    gap:10px;
+}
+.btn {
+    flex:1;
+    padding:10px;
+    border-radius:30px;
+    border:1px solid white;
+}
+
+/* EVENTS */
+.section {
+    padding:40px 20px;
+}
+
+.day-title {
+    font-size:22px;
+    margin-bottom:20px;
+    text-align:center;
+}
+
+.card {
+    background: rgba(255,255,255,0.08);
+    padding:15px;
+    border-radius:15px;
+    margin-bottom:15px;
+}
+
+.card h3 {
+    margin-bottom:5px;
+}
+
+.small {
+    font-size:13px;
+    opacity:0.9;
 }
 
 </style>
@@ -125,63 +97,85 @@ body, html {
 
 <body>
 
-<div class="bg-image"></div>
-
-<div class="container">
-
-    <div>
-        <div class="header-text">A NEW CHAPTER BEGINS</div>
-        <div class="names">Meha & Deep</div>
-        <div class="sub-text">Together with their families invite you</div>
-    </div>
-
-    <!-- Countdown -->
-    <div class="countdown-container">
-        <div class="time-box">
-            <div id="days" class="time">0</div>
-            <div class="label">Days</div>
+<!-- HERO -->
+<div class="hero">
+    <div class="glass">
+        <div>
+            <div class="heading">A NEW CHAPTER BEGINS</div>
+            <div class="names">Meha Chandaria ❤️ Deep Doshi</div>
         </div>
-        <div class="time-box">
-            <div id="hours" class="time">0</div>
-            <div class="label">Hours</div>
-        </div>
-        <div class="time-box">
-            <div id="minutes" class="time">0</div>
-            <div class="label">Minutes</div>
+
+        <div id="countdown" class="timer">Loading...</div>
+
+        <div>
+            <div>Oswal Centre, Jamnagar, Gujarat</div>
+            <br>
+            <div class="buttons">
+                <div class="btn">Team Groom</div>
+                <div class="btn">Team Bride</div>
+            </div>
         </div>
     </div>
+</div>
 
-    <!-- Details -->
-    <div class="details">
-        Tuesday • 2:31 PM <br>
-        Oswal Center, Jamnagar, Gujarat
+<!-- DAY 1 -->
+<div class="section">
+    <div class="day-title">Day 1 – 22 June 2026</div>
+
+    <div class="card">
+        <h3>Mandap</h3>
+        <div class="small">2:30 PM • Keshav Hall</div>
+        <div class="small">Men: Kurta / Traditional</div>
+        <div class="small">Women: Gharchola / Saree / Traditional</div>
     </div>
 
-    <!-- Buttons -->
-    <div class="buttons">
-        <div class="btn">Team Groom</div>
-        <div class="btn">Team Bride</div>
+    <div class="card">
+        <h3>Mameru</h3>
+        <div class="small">4:00 PM onwards</div>
+        <div class="small">Men: Kurta / Traditional</div>
+        <div class="small">Women: Gharchola / Saree / Traditional</div>
     </div>
 
+    <div class="card">
+        <h3>Ring Ceremony & Sangeet</h3>
+        <div class="small">7:30 PM onwards</div>
+        <div class="small">Men: Kurta / Indo Western</div>
+        <div class="small">Women: Chaniya Choli / Gown / Saree</div>
+    </div>
+</div>
+
+<!-- DAY 2 -->
+<div class="section">
+    <div class="day-title">Day 2 – 23 June 2026</div>
+
+    <div class="card">
+        <h3>Haldi</h3>
+        <div class="small">9:00 AM onwards</div>
+        <div class="small">Men: Kurta</div>
+        <div class="small">Women: Palazzo / Saree</div>
+    </div>
+
+    <div class="card">
+        <h3>Baraat & Lagan</h3>
+        <div class="small">4:00 PM onwards</div>
+        <div class="small">Men: Jodhpuri / Modi Coat</div>
+        <div class="small">Women: Saree / Chaniya Choli</div>
+    </div>
 </div>
 
 <script>
-// Wedding date
-const weddingDate = new Date("Feb 6, 2026 14:31:00").getTime();
+const weddingDate = new Date("June 23, 2026 16:00:00").getTime();
 
-setInterval(() => {
+setInterval(()=>{
     const now = new Date().getTime();
     const diff = weddingDate - now;
 
-    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-    const minutes = Math.floor((diff / (1000 * 60)) % 60);
+    const d = Math.floor(diff/(1000*60*60*24));
+    const h = Math.floor((diff/(1000*60*60))%24);
+    const m = Math.floor((diff/(1000*60))%60);
 
-    document.getElementById("days").innerHTML = days;
-    document.getElementById("hours").innerHTML = hours;
-    document.getElementById("minutes").innerHTML = minutes;
-
-}, 1000);
+    document.getElementById("countdown").innerHTML = d+"d "+h+"h "+m+"m";
+},1000);
 </script>
 
 </body>
