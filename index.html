@@ -26,7 +26,7 @@ animation:shine 3s linear infinite;
 }
 @keyframes shine{to{background-position:200%;}}
 
-/* 💌 intro */
+/* 💌 BIGGER ENVELOPE */
 .intro{
 position:fixed;
 width:100%;height:100%;
@@ -37,33 +37,51 @@ align-items:center;
 z-index:999;
 perspective:1200px;
 }
+
 .envelope{
-width:240px;height:150px;
+width:300px;
+height:200px;
 position:relative;
 cursor:pointer;
 transform-style:preserve-3d;
 }
+
 .flap{
-position:absolute;width:100%;height:100%;
+position:absolute;
+width:100%;
+height:100%;
 background:gold;
 clip-path:polygon(0 0,100% 0,50% 60%);
 transform-origin:top;
 transition:1s;
 }
+
 .body{
-position:absolute;width:100%;height:100%;
-background:#fff;border:2px solid gold;
+position:absolute;
+width:100%;
+height:100%;
+background:#fff;
+border:2px solid gold;
 }
+
 .letter{
-position:absolute;width:90%;height:90%;
+position:absolute;
+width:90%;
+height:90%;
 top:5%;left:5%;
 background:#fff;
-display:flex;align-items:center;justify-content:center;
-transform:translateY(60px);
-opacity:0;transition:1s;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:18px;
+font-weight:bold;
+transform:translateY(70px);
+opacity:0;
+transition:1s;
 }
+
 .open .flap{transform:rotateX(-180deg);}
-.open .letter{transform:translateY(-140px);opacity:1;}
+.open .letter{transform:translateY(-160px);opacity:1;}
 
 /* HERO */
 .hero{
@@ -146,13 +164,6 @@ li{margin:5px 0;}
 
 a{color:#ffd700;}
 
-/* gallery */
-.gallery img{
-width:100%;
-border-radius:15px;
-margin:10px 0;
-}
-
 /* canvas */
 canvas{
 position:fixed;
@@ -160,7 +171,6 @@ top:0;
 pointer-events:none;
 z-index:999;
 }
-
 </style>
 </head>
 
@@ -173,7 +183,7 @@ z-index:999;
 <div class="envelope" onclick="openInvite(this)">
 <div class="flap"></div>
 <div class="body"></div>
-<div class="letter shimmer">You're Invited 💌</div>
+<div class="letter shimmer">You are invited!</div>
 </div>
 </div>
 
@@ -215,81 +225,71 @@ Oswal Center, Jamnagar
 <div class="section">
 <h2>Wedding Events</h2>
 
-<!-- Mandap -->
 <div class="card" onclick="toggle(this)">
 <h3>🎊 Mandap</h3>
 <div class="hidden">
 <ul>
 <li>📅 22 June 2026</li>
 <li>⏰ 2:30 PM</li>
-<li>📍 <a href="https://maps.app.goo.gl/hWsrds8oxtGychpZA">Location</a></li>
+<li>👔 Men: Kurta / Traditional</li>
+<li>👗 Women: Sarees / Traditional</li>
 </ul>
 </div>
 </div>
 
-<!-- Mameru -->
 <div class="card" onclick="toggle(this)">
 <h3>🎁 Mameru</h3>
 <div class="hidden">
 <ul>
 <li>📅 22 June</li>
 <li>⏰ 4 PM</li>
-<li>📍 <a href="https://maps.app.goo.gl/hWsrds8oxtGychpZA">Location</a></li>
+<li>👔 Men: Kurta / Traditional</li>
+<li>👗 Women: Sarees / Traditional</li>
 </ul>
 </div>
 </div>
 
-<!-- Sangeet -->
 <div class="card" onclick="toggle(this)">
 <h3>🎶 Sangeet</h3>
 <div class="hidden">
 <ul>
 <li>📅 22 June</li>
 <li>⏰ 7:30 PM</li>
-<li>📍 <a href="https://maps.app.goo.gl/hWsrds8oxtGychpZA">Location</a></li>
+<li>👔 Men: Indo Western</li>
+<li>👗 Women: Chaniya Choli / Gown</li>
 </ul>
 </div>
 </div>
 
-<!-- Haldi -->
 <div class="card" onclick="toggle(this)">
 <h3>🌼 Haldi</h3>
 <div class="hidden">
 <ul>
 <li>📅 23 June</li>
 <li>⏰ 9 AM</li>
-<li>📍 <a href="https://maps.app.goo.gl/hWsrds8oxtGychpZA">Location</a></li>
+<li>👔 Men: Kurta</li>
+<li>👗 Women: Saree / Palazzo</li>
 </ul>
 </div>
 </div>
 
-<!-- Baraat -->
 <div class="card" onclick="toggle(this)">
 <h3>🐎 Baraat & Lagan</h3>
 <div class="hidden">
 <ul>
 <li>📅 23 June</li>
 <li>⏰ 4 PM</li>
-<li>📍 <a href="https://maps.app.goo.gl/hWsrds8oxtGychpZA">Location</a></li>
+<li>👔 Men: Jodhpuri / Formal</li>
+<li>👗 Women: Saree / Chaniya Choli</li>
 </ul>
 </div>
 </div>
 
 </div>
 
-<!-- 📸 gallery -->
-<div class="section gallery">
-<h2>Our Moments</h2>
-<img src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486">
-<img src="https://images.unsplash.com/photo-1519741497674-611481863552">
-</div>
-
 <script>
-
-/* open invite */
 function openInvite(el){
 el.classList.add("open");
-
 setTimeout(()=>{
 document.getElementById("intro").style.display="none";
 document.getElementById("main").style.display="flex";
@@ -297,12 +297,11 @@ document.querySelectorAll(".section").forEach(s=>s.classList.add("show"));
 },1200);
 }
 
-/* toggle */
 function toggle(card){
 card.querySelector(".hidden").classList.toggle("hidden");
 }
 
-/* canvas confetti */
+/* confetti */
 const canvas=document.getElementById("confetti");
 const ctx=canvas.getContext("2d");
 canvas.width=window.innerWidth;
@@ -328,12 +327,8 @@ ctx.clearRect(0,0,canvas.width,canvas.height);
 confetti.forEach((c,i)=>{
 ctx.fillStyle=c.color;
 ctx.fillRect(c.x,c.y,c.r,c.r);
-
 c.y+=c.speed;
-
-if(c.y>canvas.height){
-confetti.splice(i,1);
-}
+if(c.y>canvas.height){confetti.splice(i,1);}
 });
 
 requestAnimationFrame(draw);
@@ -345,13 +340,11 @@ const date=new Date("June 23, 2026 16:00:00").getTime();
 setInterval(()=>{
 let now=new Date().getTime();
 let diff=date-now;
-
 d.innerHTML=Math.floor(diff/(1000*60*60*24));
 h.innerHTML=Math.floor((diff/(1000*60*60))%24);
 m.innerHTML=Math.floor((diff/(1000*60))%60);
 s.innerHTML=Math.floor((diff/1000)%60);
 },1000);
-
 </script>
 
 </body>
