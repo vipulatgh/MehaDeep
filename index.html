@@ -1,124 +1,243 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Deep & Meha's Wedding Invitation</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Great+Vibes&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --gold: #D4AF37;
-            --maroon: #800000;
-            --cream: #FFFDD0;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meha ❤️ Deep Wedding</title>
 
-        body, html {
-            margin: 0;
-            padding: 0;
-            height: 100%;
-            background-color: var(--maroon);
-            color: var(--cream);
-            font-family: 'Montserrat', sans-serif;
-            overflow: hidden; /* Prevents scrolling to mimic a video */
-        }
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
 
-        /* Background Animation */
-        .scene {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            opacity: 0;
-            animation: videoSlide 30s infinite;
-            padding: 20px;
-            box-sizing: border-box;
-            border: 10px double var(--gold);
-        }
+<style>
+* {margin:0;padding:0;box-sizing:border-box;}
 
-        h1 { font-family: 'Great Vibes', cursive; font-size: 4rem; color: var(--gold); margin-bottom: 10px; }
-        h2 { font-family: 'Cinzel', serif; font-size: 2.5rem; letter-spacing: 3px; }
-        h3 { color: var(--gold); text-transform: uppercase; margin-top: 20px; }
-        p { font-size: 1.1rem; line-height: 1.6; }
-        .dress-code { font-style: italic; color: #ffebcd; font-size: 0.9rem; margin-top: 10px; }
+body {
+    font-family: 'Poppins', sans-serif;
+    color: white;
+    background: linear-gradient(135deg,#7a0c2e,#c2185b,#e91e63);
+    overflow-x:hidden;
+}
 
-        /* Timings for "Video" Slides */
-        .scene:nth-child(1) { animation-delay: 0s; }
-        .scene:nth-child(2) { animation-delay: 6s; }
-        .scene:nth-child(3) { animation-delay: 12s; }
-        .scene:nth-child(4) { animation-delay: 18s; }
-        .scene:nth-child(5) { animation-delay: 24s; }
+/* Floral overlay */
+body::before {
+    content:"";
+    position:fixed;
+    width:100%;
+    height:100%;
+    background:url('https://images.unsplash.com/photo-1525310072745-f49212b5ac6d?q=80&w=1200') center/cover;
+    opacity:0.2;
+    z-index:-1;
+}
 
-        @keyframes videoSlide {
-            0%, 15% { opacity: 0; transform: scale(1.1); }
-            20%, 35% { opacity: 1; transform: scale(1); }
-            40%, 100% { opacity: 0; transform: scale(0.9); }
-        }
+/* Floating animation */
+@keyframes float {
+    0% {transform: translateY(0);}
+    50% {transform: translateY(-10px);}
+    100% {transform: translateY(0);}
+}
 
-        .floral-bg {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background-image: url('https://www.transparenttextures.com/patterns/paper-fibers.png');
-            z-index: -1;
-        }
-    </style>
+/* HERO */
+.hero {
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.glass {
+    width:90%;
+    max-width:400px;
+    height:85vh;
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(18px);
+    border-radius:30px;
+    padding:25px;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    text-align:center;
+    animation: float 5s ease-in-out infinite;
+}
+
+/* TEXT */
+.heading {letter-spacing:3px;font-size:12px;}
+.names {
+    font-family:'Playfair Display';
+    font-size:28px;
+}
+
+/* COUNTDOWN */
+.countdown {
+    display:flex;
+    justify-content:space-around;
+    margin:20px 0;
+}
+.time-box {text-align:center;}
+.time {font-size:20px;font-weight:bold;}
+.label {font-size:10px;opacity:0.8;}
+
+/* BUTTONS */
+.buttons {display:flex;gap:10px;}
+.btn {
+    flex:1;
+    padding:10px;
+    border-radius:30px;
+    border:1px solid white;
+    cursor:pointer;
+    transition:0.3s;
+}
+.btn:hover {background:rgba(255,255,255,0.2);}
+
+/* SECTION */
+.section {padding:40px 20px;}
+
+.day-title {
+    text-align:center;
+    font-size:22px;
+    margin-bottom:20px;
+}
+
+/* EVENT CARDS */
+.card {
+    padding:15px;
+    border-radius:15px;
+    margin-bottom:15px;
+}
+
+/* Different themes */
+.mandap {background:linear-gradient(135deg,#ff9a9e,#fad0c4);}
+.mameru {background:linear-gradient(135deg,#fbc2eb,#a6c1ee);}
+.sangeet {background:linear-gradient(135deg,#ff758c,#ff7eb3);}
+.haldi {background:linear-gradient(135deg,#fceabb,#f8b500);}
+.baraat {background:linear-gradient(135deg,#c471f5,#fa71cd);}
+
+.card h3 {color:black;}
+.card p {color:black;font-size:13px;}
+
+/* MAP LINK */
+.map-link {
+    text-align:center;
+    margin-top:10px;
+}
+.map-link a {
+    color:white;
+    text-decoration:underline;
+}
+
+/* CONFETTI */
+.confetti {
+    position:fixed;
+    width:10px;
+    height:10px;
+    background:red;
+    top:0;
+    animation: fall 2s linear forwards;
+}
+@keyframes fall {
+    to {transform: translateY(100vh) rotate(360deg);}
+}
+</style>
 </head>
+
 <body>
 
-    <div class="floral-bg"></div>
+<!-- HERO -->
+<div class="hero">
+<div class="glass">
 
-    <div class="scene">
-        <p>Save the Date</p>
-        <h1>Deep & Meha</h1>
-        <p>Are getting married!</p>
-        <div style="font-size: 1.5rem; margin-top: 20px;">June 22nd & 23rd, 2026</div>
-        <p>Oswal Centre, Jamnagar, Gujarat</p>
-    </div>
+<div>
+<div class="heading">A NEW CHAPTER BEGINS</div>
+<div class="names">Meha Chandaria ❤️ Deep Doshi</div>
+</div>
 
-    <div class="scene">
-        <h2>Day 1: 22nd June</h2>
-        <h3>Mandap</h3>
-        <p>2:30 PM at Keshav Hall</p>
-        <div class="dress-code">Men: Kurta Pyjama | Women: Gharcholas/Bandhani/Sarees</div>
-        
-        <h3>Mameru</h3>
-        <p>4:00 PM Onwards</p>
-        <div class="dress-code">Traditional Wear</div>
-    </div>
+<div class="countdown">
+<div class="time-box"><div id="d" class="time">0</div><div class="label">D</div></div>
+<div class="time-box"><div id="h" class="time">0</div><div class="label">H</div></div>
+<div class="time-box"><div id="m" class="time">0</div><div class="label">M</div></div>
+<div class="time-box"><div id="s" class="time">0</div><div class="label">S</div></div>
+</div>
 
-    <div class="scene">
-        <h2>Sangeet Night</h2>
-        <h3>Ring Ceremony & Sangeet</h3>
-        <p>7:30 PM Onwards</p>
-        <p>Get ready to dance the night away!</p>
-        <div class="dress-code">Men: Kurta/Indo Western<br>Women: Chaniya Choli/Gowns/Indo Western</div>
-    </div>
+<div>
+<div>Oswal Centre, Jamnagar</div>
+<div class="map-link">
+<a href="https://maps.app.goo.gl/hWsrds8oxtGychpZA?g_st=ac" target="_blank">View Location</a>
+</div>
 
-    <div class="scene">
-        <h2>Day 2: 23rd June</h2>
-        <h3>Haldi Ceremony</h3>
-        <p>9:00 AM Onwards</p>
-        <p>A splash of yellow and love.</p>
-        <div class="dress-code">Men: Kurta | Women: Plazzo Suit/Sarees</div>
-    </div>
+<br>
 
-    <div class="scene">
-        <h2>The Wedding</h2>
-        <h3>Baraat & Lagan</h3>
-        <p>4:00 PM Onwards</p>
-        <div class="dress-code">Men: Jodhpuri/Modi Coat/Formals<br>Women: Sarees/Chaniya Choli</div>
-        <br>
-        <p>We look forward to your presence!</p>
-        <h1>Deep & Meha</h1>
-    </div>
+<div class="buttons">
+<div class="btn" onclick="confetti()">Team Groom</div>
+<div class="btn" onclick="confetti()">Team Bride</div>
+</div>
+</div>
 
-    <audio autoplay loop>
-        <source src="https://www.bensound.com/bensound-music/bensound-india.mp3" type="audio/mpeg">
-    </audio>
+</div>
+</div>
+
+<!-- EVENTS -->
+<div class="section">
+<div class="day-title">Day 1 – 22 June</div>
+
+<div class="card mandap">
+<h3>Mandap</h3>
+<p>2:30 PM • Keshav Hall</p>
+<p>Men: Kurta</p>
+<p>Women: Traditional Sarees</p>
+</div>
+
+<div class="card mameru">
+<h3>Mameru</h3>
+<p>4 PM onwards</p>
+</div>
+
+<div class="card sangeet">
+<h3>Ring Ceremony & Sangeet</h3>
+<p>7:30 PM onwards</p>
+</div>
+
+</div>
+
+<div class="section">
+<div class="day-title">Day 2 – 23 June</div>
+
+<div class="card haldi">
+<h3>Haldi</h3>
+<p>9 AM onwards</p>
+</div>
+
+<div class="card baraat">
+<h3>Baraat & Lagan</h3>
+<p>4 PM onwards</p>
+</div>
+
+</div>
+
+<script>
+// Countdown
+const date = new Date("June 23, 2026 16:00:00").getTime();
+
+setInterval(()=>{
+let now = new Date().getTime();
+let diff = date - now;
+
+document.getElementById("d").innerHTML = Math.floor(diff/(1000*60*60*24));
+document.getElementById("h").innerHTML = Math.floor((diff/(1000*60*60))%24);
+document.getElementById("m").innerHTML = Math.floor((diff/(1000*60))%60);
+document.getElementById("s").innerHTML = Math.floor((diff/1000)%60);
+},1000);
+
+// Confetti
+function confetti(){
+for(let i=0;i<40;i++){
+let c = document.createElement("div");
+c.className="confetti";
+c.style.left=Math.random()*100+"vw";
+c.style.background=["red","yellow","white","pink"][Math.floor(Math.random()*4)];
+document.body.appendChild(c);
+
+setTimeout(()=>c.remove(),2000);
+}
+}
+</script>
 
 </body>
 </html>
