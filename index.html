@@ -6,7 +6,7 @@
 
 <title>Meha ❤️ Deep Wedding</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display&family=Poppins:wght@300&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins&display=swap" rel="stylesheet">
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
@@ -18,7 +18,9 @@ color:#d4af37;
 overflow-x:hidden;
 }
 
-/* 💌 Envelope */
+/* ===================== */
+/* 💌 3D ENVELOPE */
+/* ===================== */
 .intro{
 position:fixed;
 width:100%;
@@ -28,15 +30,15 @@ display:flex;
 justify-content:center;
 align-items:center;
 z-index:999;
-flex-direction:column;
+perspective:1000px;
 }
 
 .envelope{
-width:200px;
-height:120px;
-border:2px solid gold;
+width:220px;
+height:140px;
 position:relative;
 cursor:pointer;
+transform-style:preserve-3d;
 }
 
 .flap{
@@ -44,16 +46,52 @@ position:absolute;
 width:100%;
 height:100%;
 background:gold;
-clip-path:polygon(0 0,100% 0,50% 50%);
-transition:0.6s;
+clip-path:polygon(0 0,100% 0,50% 60%);
+transform-origin:top;
+transition:1s;
+z-index:2;
 }
 
-.envelope:hover .flap{
+.body{
+position:absolute;
+width:100%;
+height:100%;
+background:#fff;
+border:2px solid gold;
+}
+
+.letter{
+position:absolute;
+width:90%;
+height:90%;
+background:#fff;
+top:5%;
+left:5%;
+transform:translateY(50px);
+opacity:0;
+transition:1s;
+display:flex;
+align-items:center;
+justify-content:center;
+color:black;
+font-size:14px;
+}
+
+/* open animation */
+.open .flap{
 transform:rotateX(180deg);
 }
 
+.open .letter{
+transform:translateY(-120px);
+opacity:1;
+}
+
+/* ===================== */
 /* HERO */
+/* ===================== */
 .hero{
+display:none;
 height:100vh;
 display:flex;
 justify-content:center;
@@ -74,14 +112,13 @@ justify-content:space-between;
 text-align:center;
 }
 
-/* TEXT */
 .names{
 font-family:'Great Vibes';
 font-size:36px;
 color:#ffd700;
 }
 
-/* COUNTDOWN BOX */
+/* countdown */
 .countdown-box{
 border:1px solid gold;
 padding:10px;
@@ -93,23 +130,46 @@ display:flex;
 justify-content:space-around;
 }
 
-.time{font-size:20px;}
+.time{font-size:18px;}
 .label{font-size:10px;}
 
-/* BUTTONS */
-.buttons{display:flex;gap:10px;}
-.btn{
-flex:1;
-padding:10px;
-border:1px solid gold;
-border-radius:30px;
-cursor:pointer;
+/* ===================== */
+/* CONFETTI */
+/* ===================== */
+
+/* burst particles */
+.confetti{
+position:fixed;
+width:6px;
+height:6px;
+bottom:0;
+border-radius:50%;
+animation:burst 1s ease-out forwards;
 }
 
-/* SECTION */
+@keyframes burst{
+0%{transform:translate(0,0);}
+100%{transform:translate(var(--x),var(--y));}
+}
+
+/* falling particles */
+.fall{
+position:fixed;
+top:-10px;
+border-radius:50%;
+animation:fall linear forwards;
+}
+
+@keyframes fall{
+to{transform:translateY(110vh) rotate(360deg);}
+}
+
+/* ===================== */
+/* EVENTS + SECTIONS */
+/* ===================== */
+
 .section{padding:40px 20px;text-align:center;}
 
-/* CARDS */
 .card{
 background:rgba(255,255,255,0.05);
 border:1px solid rgba(212,175,55,0.3);
@@ -122,21 +182,7 @@ cursor:pointer;
 .hidden{display:none;}
 
 ul{list-style:none;text-align:left;}
-li{margin:6px 0;}
-
-/* CONFETTI */
-.confetti{
-position:fixed;
-width:8px;
-height:8px;
-bottom:0;
-animation:spread 2s ease-out forwards;
-}
-
-@keyframes spread{
-0%{transform:translateY(0);}
-100%{transform:translateY(-120vh) translateX(var(--x)) rotate(720deg);}
-}
+li{margin:5px 0;}
 
 a{color:#ffd700;}
 
@@ -147,16 +193,17 @@ a{color:#ffd700;}
 
 <!-- 💌 INTRO -->
 <div class="intro" id="intro">
-<div class="envelope" onclick="openInvite()">
+<div class="envelope" onclick="openInvite(this)">
 <div class="flap"></div>
+<div class="body"></div>
+<div class="letter">You're Invited 💌</div>
 </div>
-<p style="margin-top:10px">Tap the seal 💌</p>
 </div>
 
 <!-- HERO -->
-<div class="hero">
-<div class="glass">
+<div class="hero" id="main">
 
+<div class="glass">
 <div class="names">Meha ❤️ Deep</div>
 
 <div class="countdown-box">
@@ -174,95 +221,25 @@ Oswal Center, Jamnagar
 </a>
 </div>
 
-<div class="buttons">
-<div class="btn" onclick="blast()">Team Groom</div>
-<div class="btn" onclick="blast()">Team Bride</div>
+<div style="margin-top:10px;">
+<button onclick="blast()">Team Groom</button>
+<button onclick="blast()">Team Bride</button>
 </div>
 
 </div>
-</div>
-
-<!-- 👰🤵 MEET -->
-<div class="section">
-<h2>Meet the Couple</h2>
-
-<p>👰 Meha – Graceful, calm and elegant ✨</p>
-<p>Brings warmth wherever she goes 💛</p>
-
-<p style="margin-top:20px">🤵 Deep – Charming and full of life 😎</p>
-<p>Turns every moment unforgettable 🎉</p>
 </div>
 
 <!-- EVENTS -->
-<div class="section">
+<div class="section" id="events" style="display:none;">
 <h2>Wedding Events</h2>
 
-<!-- Mandap -->
 <div class="card" onclick="toggle(this)">
 <h3>🎊 Mandap</h3>
 <div class="hidden">
 <ul>
-<li>📅 22 June 2026</li>
+<li>📅 22 June</li>
 <li>⏰ 2:30 PM</li>
-<li>👔 Kurta / Traditional</li>
-<li>👗 Sarees / Traditional</li>
-<li>📍 <a href="https://maps.app.goo.gl/hWsrds8oxtGychpZA?g_st=ac">Oswal Center</a></li>
-</ul>
-</div>
-</div>
-
-<!-- Mameru -->
-<div class="card" onclick="toggle(this)">
-<h3>🎁 Mameru</h3>
-<div class="hidden">
-<ul>
-<li>📅 22 June</li>
-<li>⏰ 4 PM</li>
-<li>👔 Traditional</li>
-<li>👗 Traditional</li>
-<li>📍 <a href="https://maps.app.goo.gl/hWsrds8oxtGychpZA?g_st=ac">Location</a></li>
-</ul>
-</div>
-</div>
-
-<!-- Sangeet -->
-<div class="card" onclick="toggle(this)">
-<h3>🎶 Sangeet</h3>
-<div class="hidden">
-<ul>
-<li>📅 22 June</li>
-<li>⏰ 7:30 PM</li>
-<li>👔 Indo Western</li>
-<li>👗 Chaniya Choli</li>
-<li>📍 <a href="https://maps.app.goo.gl/hWsrds8oxtGychpZA?g_st=ac">Location</a></li>
-</ul>
-</div>
-</div>
-
-<!-- Haldi -->
-<div class="card" onclick="toggle(this)">
-<h3>🌼 Haldi</h3>
-<div class="hidden">
-<ul>
-<li>📅 23 June</li>
-<li>⏰ 9 AM</li>
-<li>👔 Kurta</li>
-<li>👗 Saree</li>
-<li>📍 <a href="https://maps.app.goo.gl/hWsrds8oxtGychpZA?g_st=ac">Location</a></li>
-</ul>
-</div>
-</div>
-
-<!-- Baraat -->
-<div class="card" onclick="toggle(this)">
-<h3>🐎 Baraat & Lagan</h3>
-<div class="hidden">
-<ul>
-<li>📅 23 June</li>
-<li>⏰ 4 PM</li>
-<li>👔 Jodhpuri</li>
-<li>👗 Saree / Chaniya Choli</li>
-<li>📍 <a href="https://maps.app.goo.gl/hWsrds8oxtGychpZA?g_st=ac">Location</a></li>
+<li>📍 <a href="https://maps.app.goo.gl/hWsrds8oxtGychpZA">Location</a></li>
 </ul>
 </div>
 </div>
@@ -270,41 +247,79 @@ Oswal Center, Jamnagar
 </div>
 
 <script>
-// open invite
-function openInvite(){
+
+/* 💌 OPEN ANIMATION */
+function openInvite(el){
+el.classList.add("open");
+
+setTimeout(()=>{
 document.getElementById("intro").style.display="none";
+document.getElementById("main").style.display="flex";
+document.getElementById("events").style.display="block";
+},1200);
 }
 
-// countdown
+/* 🎊 CONFETTI */
+function blast(){
+
+/* burst from corners */
+for(let i=0;i<100;i++){
+let c=document.createElement("div");
+c.className="confetti";
+
+let side=Math.random()<0.5?0:window.innerWidth;
+c.style.left=side+"px";
+
+let x=(Math.random()*300-150);
+let y=-(Math.random()*500+200);
+
+c.style.setProperty('--x',x+'px');
+c.style.setProperty('--y',y+'px');
+
+c.style.background=["gold","white","pink"][Math.floor(Math.random()*3)];
+
+document.body.appendChild(c);
+
+setTimeout(()=>c.remove(),1000);
+}
+
+/* slow falling particles */
+for(let i=0;i<300;i++){
+let f=document.createElement("div");
+f.className="fall";
+
+f.style.left=Math.random()*100+"vw";
+f.style.width=f.style.height=(Math.random()*6+2)+"px";
+
+f.style.background=["gold","#ffd700","white"][Math.floor(Math.random()*3)];
+f.style.opacity=Math.random();
+
+f.style.animationDuration=(4+Math.random()*6)+"s";
+
+document.body.appendChild(f);
+
+setTimeout(()=>f.remove(),10000);
+}
+}
+
+/* countdown */
 const date=new Date("June 23, 2026 16:00:00").getTime();
+
 setInterval(()=>{
 let now=new Date().getTime();
 let diff=date-now;
+
 d.innerHTML=Math.floor(diff/(1000*60*60*24));
 h.innerHTML=Math.floor((diff/(1000*60*60))%24);
 m.innerHTML=Math.floor((diff/(1000*60))%60);
 s.innerHTML=Math.floor((diff/1000)%60);
 },1000);
 
-// toggle
+/* toggle */
 function toggle(card){
 card.querySelector(".hidden").classList.toggle("hidden");
 }
 
-// confetti FULL SCREEN
-function blast(){
-for(let i=0;i<200;i++){
-let c=document.createElement("div");
-c.className="confetti";
-
-c.style.left=Math.random()*100+"vw";
-c.style.setProperty('--x',(Math.random()*200-100)+"px");
-c.style.background=["gold","#ffd700","#fff"][Math.floor(Math.random()*3)];
-
-document.body.appendChild(c);
-setTimeout(()=>c.remove(),2000);
-}
-}
 </script>
 
 </body>
